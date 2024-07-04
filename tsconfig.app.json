@@ -22,7 +22,9 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
-        "paths": {}
+        "paths": {
+            "admin-panel-layout": ["../admin-panel-layout"]
+        }
     },
     "include": ["src"]
 }

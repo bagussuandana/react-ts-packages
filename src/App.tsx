@@ -1,214 +1,1193 @@
 import { BaseLayout } from "admin-panel-layout";
-import { useState } from "react";
 
 function App() {
-  const [isCollapsed, setIsCollapsed] = useState(true);
-
-  const toggleCollapsedGroup = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-  return (
-    <BaseLayout
-      topbarEnd={<div>topbar end</div>}
-      sideMenu={
-        <ul className="flex flex-col -mx-2 fi-sidebar-nav-groups gap-y-7">
-          <li className="flex flex-col fi-sidebar-group gap-y-1 fi-active">
-            <ul className="flex flex-col fi-sidebar-group-items gap-y-1">
-              <li className="flex flex-col fi-sidebar-item fi-active fi-sidebar-item-active gap-y-1">
-                <a
-                  href="https://demo.filamentphp.com"
-                  className="relative flex items-center justify-center px-2 py-2 transition duration-75 bg-gray-100 rounded-lg outline-none fi-sidebar-item-button gap-x-3 hover:bg-gray-100 focus-visible:bg-gray-100 dark:hover:bg-white/5 dark:focus-visible:bg-white/5 dark:bg-white/5"
-                >
-                  <svg
-                    className="w-6 h-6 fi-sidebar-item-icon text-primary-600 dark:text-primary-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                    data-slot="icon"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-                    />
-                  </svg>
-
-                  <span className="flex-1 text-sm font-medium truncate fi-sidebar-item-label text-primary-600 dark:text-primary-400">
-                    Dashboard
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li className="flex flex-col fi-sidebar-group gap-y-1">
-            <div
-              onClick={toggleCollapsedGroup}
-              className="flex items-center px-2 py-2 cursor-pointer fi-sidebar-group-button gap-x-3"
-            >
-              <span className="flex-1 text-sm font-medium leading-6 text-gray-500 fi-sidebar-group-label dark:text-gray-400">
-                Shop
-              </span>
-
-              <button
-                className={`fi-icon-btn relative flex items-center justify-center rounded-lg outline-none transition duration-75 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-70 -m-2 h-9 w-9 text-gray-400 hover:text-gray-500 focus-visible:ring-primary-600 dark:text-gray-500 dark:hover:text-gray-400 dark:focus-visible:ring-primary-500 fi-color-gray fi-sidebar-group-collapse-button ${
-                  isCollapsed ? "" : "-rotate-180"
-                }`}
-                title="Shop"
-                type="button"
-                aria-expanded={!isCollapsed}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleCollapsedGroup();
-                }}
-              >
-                <span className="sr-only">Shop</span>
-                <svg
-                  className="w-5 h-5 fi-icon-btn-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M9.47 6.47a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 1 1-1.06 1.06L10 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06l4.25-4.25Z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-
-            {!isCollapsed && (
-              <ul className="flex flex-col fi-sidebar-group-items gap-y-1">
-                <li className="fi-sidebar-item">
-                  <a
-                    href="https://demo.filamentphp.com/shop/products"
-                    onClick={() => {
-                      if (window.matchMedia(`(max-width: 1024px)`).matches) {
-                        /* Close sidebar logic here */
-                      }
-                    }}
-                    className="relative flex items-center justify-center px-2 py-2 transition duration-75 rounded-lg outline-none fi-sidebar-item-button gap-x-3 hover:bg-gray-100 focus-visible:bg-gray-100 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
-                  >
-                    <svg
-                      className="w-6 h-6 text-gray-400 fi-sidebar-item-icon dark:text-gray-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"
-                      ></path>
-                    </svg>
-                    <span className="flex-1 text-sm font-medium text-gray-700 truncate fi-sidebar-item-label dark:text-gray-200">
-                      Products
-                    </span>
-                  </a>
-                </li>
-                <li className="fi-sidebar-item">
-                  <a
-                    href="https://demo.filamentphp.com/shop/orders"
-                    onClick={() => {
-                      if (window.matchMedia(`(max-width: 1024px)`).matches) {
-                        /* Close sidebar logic here */
-                      }
-                    }}
-                    className="relative flex items-center justify-center px-2 py-2 transition duration-75 rounded-lg outline-none fi-sidebar-item-button gap-x-3 hover:bg-gray-100 focus-visible:bg-gray-100 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
-                  >
-                    <svg
-                      className="w-6 h-6 text-gray-400 fi-sidebar-item-icon dark:text-gray-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-                      ></path>
-                    </svg>
-                    <span className="flex-1 text-sm font-medium text-gray-700 truncate fi-sidebar-item-label dark:text-gray-200">
-                      Orders
-                    </span>
-                    <span className="fi-badge flex items-center justify-center gap-x-1 rounded-md text-xs font-medium ring-1 ring-inset px-2 min-w-[theme(spacing.6)] py-1 fi-color-custom bg-custom-50 text-custom-600 ring-custom-600/10 dark:bg-custom-400/10 dark:text-custom-400 dark:ring-custom-400/30 fi-color-primary">
-                      <span className="grid">
-                        <span className="truncate">217</span>
-                      </span>
-                    </span>
-                  </a>
-                </li>
-                <li className="fi-sidebar-item">
-                  <a
-                    href="https://demo.filamentphp.com/shop/customers"
-                    onClick={() => {
-                      if (window.matchMedia(`(max-width: 1024px)`).matches) {
-                        /* Close sidebar logic here */
-                      }
-                    }}
-                    className="relative flex items-center justify-center px-2 py-2 transition duration-75 rounded-lg outline-none fi-sidebar-item-button gap-x-3 hover:bg-gray-100 focus-visible:bg-gray-100 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
-                  >
-                    <svg
-                      className="w-6 h-6 text-gray-400 fi-sidebar-item-icon dark:text-gray-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"
-                      ></path>
-                    </svg>
-                    <span className="flex-1 text-sm font-medium text-gray-700 truncate fi-sidebar-item-label dark:text-gray-200">
-                      Customers
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            )}
-          </li>
-        </ul>
-      }
-      brand={
-        <div style={{ height: "1.25rem" }} className="flex">
-          <svg
-            fill="currentColor"
-            viewBox="0 0 128 26"
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-full text-gray-700 dark:text-gray-200"
-          >
-            <path d="M4.975 25.081c.254-1.197.496-2.355.728-3.475.193-.932.408-1.966.647-3.1l.146-.694 1.18-5.708H12.2l.793-3.777H8.265l.149-.747.165-.831c.176-.862.496-1.508.959-1.94.463-.43 1.102-.646 1.917-.646.463 0 .92.056 1.372.168.452.112.882.269 1.29.47l1.19-4.029a7.6 7.6 0 0 0-1.232-.411 11.797 11.797 0 0 0-1.48-.269A13.154 13.154 0 0 0 11.043 0c-.816 0-1.598.098-2.347.294a5.826 5.826 0 0 0-2.05.99c-.617.465-1.154 1.094-1.612 1.889-.457.795-.807 1.785-1.05 2.971L3.48 8.587l.053-.26H.793L0 12.104h2.744l-.04.193c-.074.348-.146.694-.217 1.035l-.107.51-.48 2.308-.346 1.679a965.389 965.389 0 0 1-.785 3.769 452.348 452.348 0 0 0-.72 3.483h4.926ZM19.047 8.294l-.472 1.214 2.21 1.555c.12.083.183.238.166.395l-.008.046-.149.681c-.037.171-.167.295-.32.306l-1.951.13 1.668 1.164c.12.083.183.239.165.395l-.007.047-.149.68c-.037.172-.167.296-.32.306l-1.951.131 1.668 1.163c.12.083.183.239.165.395l-.008.047-.148.68c-.038.172-.168.296-.32.306l-1.951.132 1.668 1.163c.119.083.183.238.165.395l-.008.047-.148.68c-.038.172-.168.296-.32.306l-1.952.131 1.669 1.163c.119.083.182.239.165.395l-.008.047-.148.68c-.038.172-.168.296-.321.306l-2.736.242-.34 1.46h-2.185l.675-2.683c.038-.171.168-.295.321-.305l1.95-.132-1.668-1.163a.425.425 0 0 1-.165-.395l.008-.046.149-.681c.037-.171.167-.295.32-.306l1.95-.131-1.667-1.163a.425.425 0 0 1-.165-.395l.007-.047.149-.68c.037-.172.167-.296.32-.306l1.951-.132-1.668-1.162a.425.425 0 0 1-.165-.395l.008-.047.148-.68c.037-.172.167-.296.32-.306l1.951-.132-1.668-1.163a.425.425 0 0 1-.165-.395l.008-.047.148-.68c.038-.172.168-.296.32-.306l1.952-.131L16.49 9.91a.424.424 0 0 1-.165-.395l.008-.047.304-1.081 2.409-.093Zm1.68-8.143c.896 0 1.56.305 1.99.915.433.61.562 1.34.39 2.19-.195.975-.597 1.632-1.206 1.974-.61.34-1.368.512-2.275.512-.885 0-1.551-.266-1.999-.798-.448-.532-.575-1.29-.38-2.275.183-.895.585-1.539 1.206-1.93.62-.392 1.378-.588 2.274-.588ZM27.124 21.606a849.78 849.78 0 0 0-.71 3.475H21.47c.254-1.197.496-2.358.727-3.483.232-1.125.496-2.381.794-3.77l1.917-9.3c.298-1.365.584-2.714.86-4.046L26.595.47l5.026-.436-.852 4.07c-.292 1.394-.598 2.863-.917 4.408l-1.934 9.3c-.298 1.41-.562 2.675-.794 3.794ZM40.16 7.874c1.586 0 2.892.268 3.917.805 1.025.538 1.736 1.301 2.132 2.292.397.99.447 2.168.15 3.534a134 134 0 0 1-.348 1.704l-.38 1.805-.298 1.41-.553 2.652c-.193.93-.405 1.93-.637 3.005H39.88l.214-2.232h-.38a6.622 6.622 0 0 1-1.347 1.468 5.376 5.376 0 0 1-1.595.873 5.686 5.686 0 0 1-1.852.294c-1.046 0-1.922-.26-2.628-.78a4.033 4.033 0 0 1-1.47-2.074c-.276-.861-.304-1.802-.084-2.82.166-.784.433-1.438.802-1.964.37-.526.816-.957 1.34-1.293a7.06 7.06 0 0 1 1.735-.797 13.188 13.188 0 0 1 1.975-.445l5.174-.823c.11-.503.069-.943-.124-1.318-.193-.375-.537-.666-1.033-.873-.496-.207-1.13-.31-1.901-.31-.397 0-.818.03-1.265.092-.446.062-.912.151-1.396.269-.485.117-.984.263-1.496.436a20.15 20.15 0 0 0-1.579.613l.777-4.399c.397-.134.848-.265 1.355-.394a31.603 31.603 0 0 1 1.604-.361 21.025 21.025 0 0 1 1.727-.269c.59-.067 1.165-.1 1.727-.1Zm.991 8.88a3.701 3.701 0 0 1-.562.328c-.22.106-.523.212-.909.319-.386.106-.909.232-1.57.378a9.2 9.2 0 0 0-1.174.352 2.306 2.306 0 0 0-.876.57c-.231.247-.386.566-.463.958-.11.615-.005 1.094.314 1.435.32.342.755.512 1.306.512.397 0 .796-.087 1.199-.26a4.389 4.389 0 0 0 1.157-.747c.369-.325.708-.71 1.016-1.158l.562-2.686Zm24.03-5.89c-.173-.843-.526-1.515-1.058-2.017-.69-.649-1.65-.973-2.885-.973-.76 0-1.49.134-2.19.403-.7.268-1.344.635-1.934 1.1a7.607 7.607 0 0 0-1.496 1.552h-.413l.347-2.854-4.166.252c-.286 1.399-.567 2.75-.843 4.054-.275 1.304-.534 2.56-.776 3.77l-.348 1.678a469.35 469.35 0 0 0-.793 3.769 643.41 643.41 0 0 1-.727 3.483h4.942c.242-1.197.48-2.35.71-3.458.232-1.108.48-2.289.745-3.542l.71-3.475a11.94 11.94 0 0 1 1.067-1.108 4.81 4.81 0 0 1 1.124-.773c.39-.19.807-.285 1.248-.285.771 0 1.264.305 1.48.915.214.61.217 1.418.007 2.426l-.479 2.316a374.179 374.179 0 0 0-.727 3.526c-.22 1.097-.458 2.25-.711 3.458h4.926l.735-3.483c.237-1.125.499-2.381.785-3.77.133-.648.262-1.275.389-1.88l.339-1.611-.024.11.035-.04c.237-.26.475-.502.717-.727l.181-.166a5.203 5.203 0 0 1 1.132-.78 2.75 2.75 0 0 1 1.248-.294c.772 0 1.265.305 1.48.915.215.61.217 1.418.008 2.426l-.48 2.316a573.423 573.423 0 0 1-.719 3.534 1402.9 1402.9 0 0 1-.718 3.45h4.942c.242-1.197.48-2.355.71-3.475.232-1.119.497-2.378.794-3.777.132-.65.262-1.276.389-1.88l.338-1.612c.42-1.959.287-3.525-.396-4.7-.683-1.176-1.868-1.763-3.554-1.763-.76 0-1.493.137-2.199.41a7.675 7.675 0 0 0-1.958 1.117 7.932 7.932 0 0 0-1.546 1.595h-.362l-.026-.133Zm21.368-2.99c1.73 0 3.141.319 4.232.957 1.09.637 1.83 1.533 2.215 2.686.386 1.152.391 2.495.017 4.029-.089.37-.18.716-.273 1.04-.07.244-.145.481-.225.712l-.081.229h-10.12l-.003.066c-.023.64.07 1.198.28 1.671.314.711.834 1.243 1.562 1.595.727.353 1.62.529 2.677.529.463 0 .978-.042 1.546-.126a11.392 11.392 0 0 0 1.694-.386 7.815 7.815 0 0 0 1.554-.663l-.661 4.264c-.298.18-.706.347-1.223.504-.518.156-1.116.285-1.794.386-.678.1-1.408.15-2.19.15-1.984 0-3.64-.388-4.967-1.166a6.363 6.363 0 0 1-2.81-3.316c-.546-1.432-.62-3.133-.224-5.103.331-1.623.893-3.039 1.687-4.248.793-1.208 1.79-2.146 2.991-2.812 1.202-.665 2.573-.998 4.116-.998Zm.1 3.542c-.563 0-1.11.151-1.645.453-.535.302-1.011.772-1.43 1.41a6.12 6.12 0 0 0-.647 1.348l-.05.147 5.974-.126.02-.144c.081-.737-.026-1.397-.322-1.98-.374-.739-1.008-1.108-1.9-1.108ZM99.102 25.08c.242-1.197.48-2.347.71-3.45l.745-3.55.71-3.475a10.82 10.82 0 0 1 1.083-1.108 4.978 4.978 0 0 1 1.157-.773c.402-.19.84-.285 1.314-.285.871 0 1.422.305 1.653.915.232.61.237 1.418.017 2.426l-.48 2.316a887.36 887.36 0 0 1-1.438 6.984h4.943l.735-3.483c.237-1.125.494-2.381.769-3.77.143-.648.278-1.275.405-1.88l.339-1.611c.408-1.959.264-3.525-.43-4.7-.694-1.176-1.934-1.763-3.719-1.763a6.41 6.41 0 0 0-2.256.403 7.362 7.362 0 0 0-1.976 1.1 7.515 7.515 0 0 0-1.504 1.552h-.413l.347-2.854-4.166.252a773.733 773.733 0 0 1-.843 4.063c-.275 1.31-.534 2.563-.776 3.76l-.348 1.679a2903.763 2903.763 0 0 1-1.52 7.252h4.942Zm21.863.454c.397 0 .826-.037 1.289-.11a10.34 10.34 0 0 0 1.298-.285c.402-.117.719-.255.95-.411l.529-4.113c-.43.302-.857.515-1.281.638a4.211 4.211 0 0 1-1.165.184c-.805 0-1.353-.28-1.645-.839-.292-.56-.322-1.377-.091-2.451l1.248-6.044h4.918l.793-3.777h-4.924l.033-.158c.072-.338.14-.666.206-.982l.065-.312c.171-.823.339-1.623.504-2.401.166-.778.336-1.603.513-2.476l-5.058.89c-.232 1.108-.455 2.182-.67 3.223-.129.624-.269 1.291-.419 2l-.046.216h-2.667l-.794 3.777h2.676l-.021.102-.06.293c-.176.867-.344 1.678-.504 2.434a388.73 388.73 0 0 0-.454 2.182c-.144.7-.292 1.413-.447 2.14-.297 1.422-.264 2.598.1 3.526.363.93.989 1.62 1.876 2.074.887.453 1.97.68 3.248.68Z"></path>
-          </svg>
-        </div>
-      }
-    >
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus veritatis,
-      nesciunt veniam hic quae, architecto sapiente corrupti officia alias
-      pariatur sunt distinctio voluptate molestiae dolores a id fuga aliquam!
-      At, tempore consequatur nostrum dicta quisquam modi aperiam assumenda
-      exercitationem sed ipsum consequuntur magni reiciendis, laborum asperiores
-      quae dolores cupiditate eos? Voluptatibus laborum quos ipsam iste
-      molestias aperiam assumenda magni minus saepe. Accusamus, laborum est ex
-      odio quis iste doloribus id voluptatum, maxime incidunt possimus non,
-      aperiam quibusdam quidem nam? Quod adipisci quo quam, explicabo temporibus
-      dolore quibusdam nam labore voluptates commodi nisi rerum veniam at vero
-      aliquam velit nihil ullam.
-    </BaseLayout>
-  );
+    return (
+        <BaseLayout
+            brand={<div>brand</div>}
+            openIcon={<div>Open</div>}
+            closeIcon={<div>close</div>}
+            topbarEnd={<div>topbar end</div>}
+            sideMenu={
+                <div>
+                    <ul className="space-y-2">
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
+                                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
+                                </svg>
+                                <span className="ml-3">Overview</span>
+                            </a>
+                        </li>
+                        <li>
+                            <button
+                                type="button"
+                                className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                aria-controls="dropdown-pages"
+                                data-collapse-toggle="dropdown-pages"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="flex-1 ml-3 text-left whitespace-nowrap">
+                                    Pages
+                                </span>
+                                <svg
+                                    aria-hidden="true"
+                                    className="w-6 h-6"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </button>
+                            <ul
+                                id="dropdown-pages"
+                                className="hidden py-2 space-y-2"
+                            >
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Settings
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Kanban
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Calendar
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <button
+                                type="button"
+                                className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                aria-controls="dropdown-sales"
+                                data-collapse-toggle="dropdown-sales"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="flex-1 ml-3 text-left whitespace-nowrap">
+                                    Sales
+                                </span>
+                                <svg
+                                    aria-hidden="true"
+                                    className="w-6 h-6"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </button>
+                            <ul
+                                id="dropdown-sales"
+                                className="hidden py-2 space-y-2"
+                            >
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Products
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Billing
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Invoice
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z" />
+                                    <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" />
+                                </svg>
+                                <span className="flex-1 ml-3 whitespace-nowrap">
+                                    Messages
+                                </span>
+                                <span className="inline-flex justify-center items-center w-5 h-5 text-xs font-semibold rounded-full text-primary-800 bg-primary-100 dark:bg-primary-200 dark:text-primary-800">
+                                    6
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <button
+                                type="button"
+                                className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                aria-controls="dropdown-authentication"
+                                data-collapse-toggle="dropdown-authentication"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="flex-1 ml-3 text-left whitespace-nowrap">
+                                    Authentication
+                                </span>
+                                <svg
+                                    aria-hidden="true"
+                                    className="w-6 h-6"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </button>
+                            <ul
+                                id="dropdown-authentication"
+                                className="hidden py-2 space-y-2"
+                            >
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Sign In
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Sign Up
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Forgot Password
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="ml-3">Docs</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                </svg>
+                                <span className="ml-3">Components</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="ml-3">Help</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="ml-3">Docs</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                </svg>
+                                <span className="ml-3">Components</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="ml-3">Help</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="ml-3">Docs</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                </svg>
+                                <span className="ml-3">Components</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="ml-3">Help</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="ml-3">Docs</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                </svg>
+                                <span className="ml-3">Components</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="ml-3">Help</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul className="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="ml-3">Docs</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                </svg>
+                                <span className="ml-3">Components</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    className="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <span className="ml-3">Help</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            }
+        >
+            <section className="bg-white dark:bg-gray-900">
+                <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+                    <div className="max-w-screen-md mb-8 lg:mb-16">
+                        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                            Designed for business teams like yours
+                        </h2>
+                        <p className="text-gray-500 sm:text-xl dark:text-gray-400">
+                            Here at Flowbite we focus on markets where
+                            technology, innovation, and capital can unlock
+                            long-term value and drive economic growth.
+                        </p>
+                    </div>
+                    <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Marketing
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Plan it, create it, launch it. Collaborate
+                                seamlessly with all the organization and hit
+                                your marketing goals every month with our
+                                marketing plan.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Legal
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Protect your organization, devices and stay
+                                compliant with our structured workflows and
+                                custom permissions made for you.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                                        clipRule="evenodd"
+                                    />
+                                    <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Business Automation
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Auto-assign tasks, send Slack messages, and much
+                                more. Now power up with hundreds of new
+                                templates to help you get started.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Finance
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Audit-proof software built for critical
+                                financial operations like month-end close and
+                                quarterly budgeting.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Enterprise Design
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Craft beautiful, delightful experiences for both
+                                marketing and product with real cross-company
+                                collaboration.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Operations
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Keep your company’s lights on with customizable,
+                                iterative, and structured workflows built for
+                                all efficient teams and individual.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="bg-white dark:bg-gray-900">
+                <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+                    <div className="max-w-screen-md mb-8 lg:mb-16">
+                        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                            Designed for business teams like yours
+                        </h2>
+                        <p className="text-gray-500 sm:text-xl dark:text-gray-400">
+                            Here at Flowbite we focus on markets where
+                            technology, innovation, and capital can unlock
+                            long-term value and drive economic growth.
+                        </p>
+                    </div>
+                    <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Marketing
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Plan it, create it, launch it. Collaborate
+                                seamlessly with all the organization and hit
+                                your marketing goals every month with our
+                                marketing plan.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Legal
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Protect your organization, devices and stay
+                                compliant with our structured workflows and
+                                custom permissions made for you.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                                        clipRule="evenodd"
+                                    />
+                                    <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Business Automation
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Auto-assign tasks, send Slack messages, and much
+                                more. Now power up with hundreds of new
+                                templates to help you get started.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Finance
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Audit-proof software built for critical
+                                financial operations like month-end close and
+                                quarterly budgeting.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Enterprise Design
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Craft beautiful, delightful experiences for both
+                                marketing and product with real cross-company
+                                collaboration.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Operations
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Keep your company’s lights on with customizable,
+                                iterative, and structured workflows built for
+                                all efficient teams and individual.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="bg-white dark:bg-gray-900">
+                <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+                    <div className="max-w-screen-md mb-8 lg:mb-16">
+                        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                            Designed for business teams like yours
+                        </h2>
+                        <p className="text-gray-500 sm:text-xl dark:text-gray-400">
+                            Here at Flowbite we focus on markets where
+                            technology, innovation, and capital can unlock
+                            long-term value and drive economic growth.
+                        </p>
+                    </div>
+                    <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Marketing
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Plan it, create it, launch it. Collaborate
+                                seamlessly with all the organization and hit
+                                your marketing goals every month with our
+                                marketing plan.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Legal
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Protect your organization, devices and stay
+                                compliant with our structured workflows and
+                                custom permissions made for you.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                                        clipRule="evenodd"
+                                    />
+                                    <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Business Automation
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Auto-assign tasks, send Slack messages, and much
+                                more. Now power up with hundreds of new
+                                templates to help you get started.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Finance
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Audit-proof software built for critical
+                                financial operations like month-end close and
+                                quarterly budgeting.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Enterprise Design
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Craft beautiful, delightful experiences for both
+                                marketing and product with real cross-company
+                                collaboration.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Operations
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Keep your company’s lights on with customizable,
+                                iterative, and structured workflows built for
+                                all efficient teams and individual.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="bg-white dark:bg-gray-900">
+                <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+                    <div className="max-w-screen-md mb-8 lg:mb-16">
+                        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                            Designed for business teams like yours
+                        </h2>
+                        <p className="text-gray-500 sm:text-xl dark:text-gray-400">
+                            Here at Flowbite we focus on markets where
+                            technology, innovation, and capital can unlock
+                            long-term value and drive economic growth.
+                        </p>
+                    </div>
+                    <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Marketing
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Plan it, create it, launch it. Collaborate
+                                seamlessly with all the organization and hit
+                                your marketing goals every month with our
+                                marketing plan.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Legal
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Protect your organization, devices and stay
+                                compliant with our structured workflows and
+                                custom permissions made for you.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                                        clipRule="evenodd"
+                                    />
+                                    <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Business Automation
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Auto-assign tasks, send Slack messages, and much
+                                more. Now power up with hundreds of new
+                                templates to help you get started.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Finance
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Audit-proof software built for critical
+                                financial operations like month-end close and
+                                quarterly budgeting.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Enterprise Design
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Craft beautiful, delightful experiences for both
+                                marketing and product with real cross-company
+                                collaboration.
+                            </p>
+                        </div>
+                        <div>
+                            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                <svg
+                                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 className="mb-2 text-xl font-bold dark:text-white">
+                                Operations
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                Keep your company’s lights on with customizable,
+                                iterative, and structured workflows built for
+                                all efficient teams and individual.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </BaseLayout>
+    );
 }
 
 export default App;
