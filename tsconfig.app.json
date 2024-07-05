@@ -21,10 +21,7 @@
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true,
-        "paths": {
-            "admin-panel-layout": ["../admin-panel-layout"]
-        }
+        "noFallthroughCasesInSwitch": true
     },
     "include": ["src"]
 }

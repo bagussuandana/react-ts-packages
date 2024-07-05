@@ -1,4 +1,4 @@
-import { useBaseLayout } from "admin-panel-layout";
+import { useBaseLayout } from "@visiarch/admin-panel-layout";
 const SideMenu = () => {
     const { isCollapsed } = useBaseLayout();
     console.log(isCollapsed);
