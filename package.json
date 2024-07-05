@@ -21,6 +21,7 @@
         "@types/react-dom": "^18.3.0",
         "@typescript-eslint/eslint-plugin": "^7.13.1",
         "@typescript-eslint/parser": "^7.13.1",
+        "@visiarch/admin-panel-layout": "^1.0.1",
         "@vitejs/plugin-react-swc": "^3.5.0",
         "admin-panel-layout": "file:../admin-panel-layout",
         "autoprefixer": "^10.4.19",

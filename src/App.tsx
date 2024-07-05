@@ -1,4 +1,4 @@
-import { BaseLayout } from "admin-panel-layout";
+import { BaseLayout } from "@visiarch/admin-panel-layout";
 import SideMenu from "./components/side-menu";
 
 function App() {
